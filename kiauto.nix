@@ -1,4 +1,4 @@
-{ lib, buildPythonPackage, fetchPypi, psutil, xvfbwrapper, kicad }:
+{ lib, buildPythonPackage, fetchPypi, psutil, xvfbwrapper, kicad, recordmydesktop, xdotool, xorg, x11vnc }:
 
 buildPythonPackage rec {
   pname = "kiauto";
@@ -9,7 +9,7 @@ buildPythonPackage rec {
     sha256 = "sha256-bqeZgUn4ltVvpRqdEMu/Ur4Fxs7in5zg5NJkwFHEf7I=";
   };
 
-  propagatedBuildInputs = [ psutil xvfbwrapper kicad ];
+  propagatedBuildInputs = [ psutil xvfbwrapper kicad recordmydesktop xdotool xorg.setxkbmap x11vnc ];
 
   meta = with lib; {
     maintainers = with maintainers; [ thelegy ];

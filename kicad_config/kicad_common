@@ -1,0 +1,16 @@
+UseIconsInMenus=1
+IconScale=0
+MousewheelPAN=0
+ZoomNoCenter=0
+AutoPAN=1
+OpenGLAntialiasingMode=0
+CairoAntialiasingMode=0
+WorkingDir=/home/beinke/repos/kikit-nix/foo/source
+ShowEnvVarWarningDialog=1
+[EnvironmentVariables]
+KICAD_SYMBOL_DIR=/nix/store/7jzm6kybl7xwks558x9718s62hx18d2d-kicad-base-5.1.10/share/kicad/library
+KICAD_TEMPLATE_DIR=/nix/store/7jzm6kybl7xwks558x9718s62hx18d2d-kicad-base-5.1.10/share/kicad/template
+KICAD_USER_TEMPLATE_DIR=/home/beinke/repos/kikit-nix/foo/source/home/kicad/template
+KIGITHUB=https://github.com/KiCad
+KISYS3DMOD=/nix/store/7jzm6kybl7xwks558x9718s62hx18d2d-kicad-base-5.1.10/share/kicad/modules/packages3d/
+KISYSMOD=/nix/store/7jzm6kybl7xwks558x9718s62hx18d2d-kicad-base-5.1.10/share/kicad/modules

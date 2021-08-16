@@ -10,6 +10,7 @@
     packages.kibom = pkgs.kibom;
     packages.kikit = pkgs.kikit;
     packages.ibom = pkgs.ibom;
+    packages.recordmydesktop = pkgs.recordmydesktop;
     apps.kikit = { type = "app"; program = "${packages.kikit}/bin/kikit"; };
     apps.kikit-info = { type = "app"; program = "${packages.kikit}/bin/kikit-info"; };
     apps.kikit-plugin = { type = "app"; program = "${packages.kikit}/bin/kikit-plugin"; };

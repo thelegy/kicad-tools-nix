@@ -24,6 +24,8 @@ with final;
     };
   };
 
+  recordmydesktop = callPackage ./recordmydesktop.nix {};
+
   kibom = with python3Packages; toPythonApplication kibom;
   kibot = with python3Packages; toPythonApplication kibot;
   kikit = with python3Packages; toPythonApplication kikit;
