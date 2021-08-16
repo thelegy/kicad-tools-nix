@@ -73,6 +73,8 @@ buildPythonPackage rec {
     ' and not test_step_variant_1'
   '';
 
+  pipInstallFlags = [ "--no-compile" ];
+
   meta = with lib; {
     maintainers = with maintainers; [ thelegy ];
   };
