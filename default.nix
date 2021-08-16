@@ -29,4 +29,13 @@ with final;
   kikit = with python3Packages; toPythonApplication kikit;
   ibom = with python3Packages; toPythonApplication InteractiveHtmlBom;
 
+  runKiBot = name: src: pkgs.runCommand name { inherit src; } ''
+    export HOME=$(mktemp -d)
+    mkdir $HOME/.config
+    cp -r ${./kicad_config} $HOME/.config/kicad
+    chmod -R u+w $HOME/.config
+    cd $src
+    ${pkgs.kibot}/bin/kibot --out-dir $out
+  '';
+
 }
