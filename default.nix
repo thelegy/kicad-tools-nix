@@ -1,5 +1,5 @@
 final: prev:
-
+with final.lib;
 with final;
 
 {
@@ -25,6 +25,8 @@ with final;
   };
 
   recordmydesktop = callPackage ./recordmydesktop.nix {};
+
+  kicad-combined = callPackage ./kicad-combined.nix {};
 
   kibom = with python3Packages; toPythonApplication kibom;
   kibot = with python3Packages; toPythonApplication kibot;
