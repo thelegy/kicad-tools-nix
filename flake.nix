@@ -3,29 +3,38 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs;
     wat = {
-      url = gitlab:beini/wat?host=git.c3pb.de;
+      url = github:thelegy/wat;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, wat, ... }:
-  wat.lib.eachSystem ["x86_64-linux" "aarch64-linux"] (system: pkgs: rec {
-    systemOverlays = [ self.overlay ];
-    packages = { inherit (pkgs)
+  outputs = { nixpkgs, wat, ... }: with nixpkgs.lib; let
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+    overlay = import ./.;
+    pkgs = wat.lib.withPkgsFor systems nixpkgs [overlay] id;
+  in rec {
+
+    inherit overlay;
+
+    packages = genAttrs systems (system: {
+      inherit (pkgs.${system})
       ibom
       kibom
       kibot
       kikit
       kicad-combined
       recordmydesktop
-      python3Packages
       ;
-    };
-    apps.kikit = { type = "app"; program = "${packages.kikit}/bin/kikit"; };
-    apps.kikit-info = { type = "app"; program = "${packages.kikit}/bin/kikit-info"; };
-    apps.kikit-plugin = { type = "app"; program = "${packages.kikit}/bin/kikit-plugin"; };
-  }) // {
-    overlay = import ./.;
+    });
+
+    legacyPackages = genAttrs systems (system: { inherit (pkgs.${system}) python3Packages; });
+
+    apps = genAttrs systems (system: {
+      kikit = { type = "app"; program = "${packages.${system}.kikit}/bin/kikit"; };
+      kikit-info = { type = "app"; program = "${packages.${system}.kikit}/bin/kikit-info"; };
+      kikit-plugin = { type = "app"; program = "${packages.${system}.kikit}/bin/kikit-plugin"; };
+    });
+
   };
 
 }
